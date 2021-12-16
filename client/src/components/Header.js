@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 // import { Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 class Header extends Component {
-
   renderAuthButton() {
     // console.log(this.props.auth);
     if (this.props.auth === null) {
@@ -47,9 +47,9 @@ class Header extends Component {
   render() {
     return (
       <div className="ui tabular menu">
-        <div className="item" onClick={() => this.props.history.push("/")}>
+        <Link to={this.props.auth ? "/homework" : "/"} className="item">
           Main
-        </div>
+        </Link>
         <div className="right menu">{this.renderAuthButton()}</div>
       </div>
     );

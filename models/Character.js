@@ -5,6 +5,7 @@ const characterSchema = new Schema({
   googleId: String,
   characterName: String,
   itemLevel: String,
+  abyssProgress: Object,
   bossProgress: Object,
 });
 

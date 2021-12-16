@@ -57,7 +57,7 @@ class Dashboard extends React.Component {
   render() {
     return (
       <div>
-        <h2>Dahsboard</h2>
+        <h2>Dashboard</h2>
         <div>{this.renderList()}</div>
         {this.renderCreate()}
       </div>

@@ -1,14 +1,14 @@
 const mongoose = require("mongoose");
 const Character = mongoose.model("characters");
 const User = mongoose.model("users");
+
 module.exports = (app) => {
   app.get("/api/characters/", async (req, res) => {
-    // console.log(req.user);
-    const chars = await Character.find({ googleId: req.user.googleId }, "-__v");
-    // console.log(chars);
+    const chars = await Character.find({ googleId: req.user.googleId }, "-__v");    
     res.send(chars);
   });
 
+  //create Character
   app.post("/api/characters", async (req, res) => {
     const { characterName, itemLevel, googleId } = req.body;
 

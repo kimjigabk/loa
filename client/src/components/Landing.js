@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import history from "../history";
+import { Redirect } from "react-router-dom";
+// import history from "../history";
 
 class Landing extends Component {
   renderContent() {
@@ -24,7 +25,7 @@ class Landing extends Component {
       );
     }
     // logged in, send to homework page
-    else return history.push("/homework");
+    else return <Redirect to="/homework" />;
   }
 
   render() {
