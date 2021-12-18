@@ -70,10 +70,10 @@ class BossEdit2 extends React.Component {
           }}
           className="ui button negative"
         >
-          Save
+          저장
         </button>
         <button onClick={this.props.hideEditModal} className="ui button">
-          Cancel
+          취소
         </button>
       </React.Fragment>
     );
@@ -96,7 +96,7 @@ class BossEdit2 extends React.Component {
               }));
           }}
         >
-          Normal
+          노말
         </button>
         {this.props.editngCharitemLevel >= 1460 && (
           <button
@@ -113,7 +113,7 @@ class BossEdit2 extends React.Component {
                 }));
             }}
           >
-            Hard
+            하드
           </button>
         )}
         <hr></hr>
@@ -139,7 +139,7 @@ class BossEdit2 extends React.Component {
             }));
           }}
         >
-          Gateway
+          관문별
         </button>
         {this.state.gateway && (
           <div style={{ paddingTop: "10px" }}>
@@ -152,7 +152,7 @@ class BossEdit2 extends React.Component {
                 }));
               }}
             >
-              1-Normal
+              1-노말
             </button>
             <button
               className={`tiny ui button ${this.state["n2"] ? "violet" : ""}`}
@@ -163,7 +163,7 @@ class BossEdit2 extends React.Component {
                 }));
               }}
             >
-              2-Normal
+              2-노말
             </button>
             <button
               className={`tiny ui button ${this.state["n3"] ? "violet" : ""}`}
@@ -174,7 +174,7 @@ class BossEdit2 extends React.Component {
                 }));
               }}
             >
-              3-Normal
+              3-노말
             </button>
           </div>
         )}
@@ -189,7 +189,7 @@ class BossEdit2 extends React.Component {
                 }));
               }}
             >
-              1-Hard
+              1-하드
             </button>
             <button
               className={`tiny ui button ${this.state["h2"] ? "violet" : ""}`}
@@ -200,7 +200,7 @@ class BossEdit2 extends React.Component {
                 }));
               }}
             >
-              2-Hard
+              2-하드
             </button>
             <button
               className={`tiny ui button ${this.state["h3"] ? "violet" : ""}`}
@@ -211,7 +211,7 @@ class BossEdit2 extends React.Component {
                 }));
               }}
             >
-              3-Hard
+              3-하드
             </button>
           </div>
         )}
@@ -230,7 +230,7 @@ class BossEdit2 extends React.Component {
             }));
           }}
         >
-          Bus
+          버스
         </button>
         {this.state.bus && (
           <input
@@ -243,7 +243,7 @@ class BossEdit2 extends React.Component {
     );
   }
   renderGold() {
-    return <div>Gold Earned: {calculateGold(this.state, 2)}</div>;
+    return <div>번 골드: {calculateGold(this.state, 2)}</div>;
   }
   modalContent() {
     return (
@@ -261,7 +261,7 @@ class BossEdit2 extends React.Component {
     return (
       <div>
         <Modal
-          title={`Edit Boss2 for: ${this.props.editingCharName}`}
+          title={`비아키스 for: ${this.props.editingCharName}`}
           content={this.modalContent()}
           actions={this.saveAction()}
           onDismiss={this.props.hideEditModal}

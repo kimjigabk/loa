@@ -27,10 +27,26 @@ module.exports = (app) => {
   app.patch("/api/current_user/save", async (req, res) => {
     const { top, bottom, totalGold } = req.body;
     try {
-      user = await User.findOneAndUpdate(
+      const user = await User.findOneAndUpdate(
         { _id: req.user.id },
         {
           $addToSet: { achievement: top + "/" + bottom, goldEarned: totalGold },
+        },
+        { new: true }
+      );
+      res.send(user);
+    } catch (err) {
+      res.status(422).send(err);
+    }
+  });
+
+  app.patch("/api/current_user/name", async (req, res) => {
+    const newName = req.body;
+    try {
+      const user = await User.findOneAndUpdate(
+        { _id: req.user.id },
+        {
+          displayName: newName,
         },
         { new: true }
       );

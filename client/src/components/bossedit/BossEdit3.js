@@ -49,10 +49,10 @@ class BossEdit3 extends React.Component {
           }}
           className="ui button negative"
         >
-          Save
+          저장
         </button>
         <button onClick={this.props.hideEditModal} className="ui button">
-          Cancel
+          취소
         </button>
       </React.Fragment>
     );
@@ -69,7 +69,7 @@ class BossEdit3 extends React.Component {
             }));
           }}
         >
-          Normal
+          노말
         </button>
         <hr></hr>
       </div>
@@ -90,7 +90,7 @@ class BossEdit3 extends React.Component {
             }));
           }}
         >
-          Gateway
+          관문별
         </button>
         {this.state.gateway && (
           <div style={{ paddingTop: "10px" }}>
@@ -102,7 +102,7 @@ class BossEdit3 extends React.Component {
                 }));
               }}
             >
-              1-Normal
+              1-노말
             </button>
             <button
               className={`tiny ui button ${this.state["n2"] ? "violet" : ""}`}
@@ -112,7 +112,7 @@ class BossEdit3 extends React.Component {
                 }));
               }}
             >
-              2-Normal
+              2-노말
             </button>
             <button
               className={`tiny ui button ${this.state["n3"] ? "violet" : ""}`}
@@ -122,7 +122,7 @@ class BossEdit3 extends React.Component {
                 }));
               }}
             >
-              3-Normal
+              3-노말
             </button>
           </div>
         )}
@@ -141,7 +141,7 @@ class BossEdit3 extends React.Component {
             }));
           }}
         >
-          Bus
+          버스
         </button>
         {this.state.bus && (
           <input
@@ -154,7 +154,7 @@ class BossEdit3 extends React.Component {
     );
   }
   renderGold() {
-    return <div>Gold Earned: {calculateGold(this.state, 3)}</div>;
+    return <div>번 골드: {calculateGold(this.state, 3)}</div>;
   }
   modalContent() {
     return (
@@ -172,7 +172,7 @@ class BossEdit3 extends React.Component {
     return (
       <div>
         <Modal
-          title={`Edit Boss3 for: ${this.props.editingCharName}`}
+          title={`쿠크세이튼 for: ${this.props.editingCharName}`}
           content={this.modalContent()}
           actions={this.saveAction()}
           onDismiss={this.props.hideEditModal}

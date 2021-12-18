@@ -70,10 +70,10 @@ class BossEdit4 extends React.Component {
           }}
           className="ui button negative"
         >
-          Save
+          저장
         </button>
         <button onClick={this.props.hideEditModal} className="ui button">
-          Cancel
+          취소
         </button>
       </React.Fragment>
     );
@@ -96,7 +96,7 @@ class BossEdit4 extends React.Component {
               }));
           }}
         >
-          Normal
+          노말
         </button>
         {this.props.editngCharitemLevel >= 1560 && (
           <button
@@ -113,7 +113,7 @@ class BossEdit4 extends React.Component {
                 }));
             }}
           >
-            Hard
+            하드
           </button>
         )}
         <hr></hr>
@@ -139,7 +139,7 @@ class BossEdit4 extends React.Component {
             }));
           }}
         >
-          Gateway
+          관문별
         </button>
         <div style={{ paddingTop: "5px" }}>
           {this.state.gateway && (
@@ -152,7 +152,7 @@ class BossEdit4 extends React.Component {
                 }));
               }}
             >
-              1-Normal
+              12-노말
             </button>
           )}
           {this.state.gateway && this.props.editngCharitemLevel >= 1500 && (
@@ -165,7 +165,7 @@ class BossEdit4 extends React.Component {
                 }));
               }}
             >
-              2-Normal
+              34-노말
             </button>
           )}
           {this.state.gateway && this.props.editngCharitemLevel >= 1520 && (
@@ -178,7 +178,7 @@ class BossEdit4 extends React.Component {
                 }));
               }}
             >
-              3-Normal
+              56-노말
             </button>
           )}
         </div>
@@ -193,7 +193,7 @@ class BossEdit4 extends React.Component {
                 }));
               }}
             >
-              1-Hard
+              12-하드
             </button>
           )}
 
@@ -207,7 +207,7 @@ class BossEdit4 extends React.Component {
                 }));
               }}
             >
-              2-Hard
+              34-하드
             </button>
           )}
           {this.state.gateway && this.props.editngCharitemLevel >= 1560 && (
@@ -220,7 +220,7 @@ class BossEdit4 extends React.Component {
                 }));
               }}
             >
-              3-Hard
+              56-하드
             </button>
           )}
         </div>
@@ -239,7 +239,7 @@ class BossEdit4 extends React.Component {
             }));
           }}
         >
-          Bus
+          버스
         </button>
         {this.state.bus && (
           <input
@@ -252,7 +252,7 @@ class BossEdit4 extends React.Component {
     );
   }
   renderGold() {
-    return <div>Gold Earned: {calculateGold(this.state, 4)}</div>;
+    return <div>번 골드: {calculateGold(this.state, 4)}</div>;
   }
   modalContent() {
     return (
@@ -270,7 +270,7 @@ class BossEdit4 extends React.Component {
     return (
       <div>
         <Modal
-          title={`Edit Boss4 for: ${this.props.editingCharName}`}
+          title={`아브렐슈드 for: ${this.props.editingCharName}`}
           content={this.modalContent()}
           actions={this.saveAction()}
           onDismiss={this.props.hideEditModal}

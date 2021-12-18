@@ -8,7 +8,6 @@
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.24.0",
     "chart.js": "^3.6.2",
-    "faker": "^5.5.3",
     "http-proxy-middleware": "^2.0.1",
     "lodash": "^4.17.21",
     "react": "^17.0.2",

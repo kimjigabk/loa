@@ -5,6 +5,8 @@ import BossEdit2 from "./BossEdit2";
 import BossEdit3 from "./BossEdit3";
 import BossEdit4 from "./BossEdit4";
 // this.props.charId
+import { bossCode, BALTAN, BIA, KOKOU, ABREL } from "./bossCode";
+
 class BossEdit extends React.Component {
   state = {
     isModalActive: false,
@@ -26,91 +28,27 @@ class BossEdit extends React.Component {
     });
   };
 
-  renderItem1(bp) {
-    if (Object.keys(bp).length === 3 && !bp["1"]) return;
+  renderEdit(bp, bossnumber) {
+    if (Object.keys(bp).length === 3 && !bp[bossnumber]) return;
     let color = "";
-    if (bp["1"]) {
-      if (bp["1"].includes("H0") || bp["1"].includes("N0")) color = "blue";
-      if (bp["1"].includes("H1") || bp["1"].includes("N1")) color = "yellow";
+    if (bp[bossnumber]) {
+      if (bp[bossnumber].includes("H0") || bp[bossnumber].includes("N0"))
+        color = "blue";
+      if (bp[bossnumber].includes("H1") || bp[bossnumber].includes("N1"))
+        color = "yellow";
     }
     return (
       <div className="item">
         <button
           onClick={(e) => {
             e.stopPropagation();
-            this.showEditModal(this.props.charId, 1);
+            this.showEditModal(this.props.charId, bossnumber);
           }}
           className={`compact ui icon button ${color}`}
         >
           <i className="edit outline icon"></i>
         </button>
-        Boss1
-      </div>
-    );
-  }
-  renderItem2(bp) {
-    if (Object.keys(bp).length === 3 && !bp["2"]) return;
-    let color = "";
-    if (bp["2"]) {
-      if (bp["2"].includes("H0") || bp["2"].includes("N0")) color = "blue";
-      if (bp["2"].includes("H1") || bp["2"].includes("N1")) color = "yellow";
-    }
-    return (
-      <div className="item">
-        <button
-          onClick={(e) => {
-            e.stopPropagation();
-            this.showEditModal(this.props.charId, 2);
-          }}
-          className={`compact ui icon button ${color}`}
-        >
-          <i className="edit outline icon"></i>
-        </button>
-        Boss2
-      </div>
-    );
-  }
-  renderItem3(bp) {
-    if (Object.keys(bp).length === 3 && !bp["3"]) return;
-    let color = "";
-    if (bp["3"]) {
-      if (bp["3"].includes("H0") || bp["3"].includes("N0")) color = "blue";
-      if (bp["3"].includes("H1") || bp["3"].includes("N1")) color = "yellow";
-    }
-    return (
-      <div className="item">
-        <button
-          onClick={(e) => {
-            e.stopPropagation();
-            this.showEditModal(this.props.charId, 3);
-          }}
-          className={`compact ui icon button ${color}`}
-        >
-          <i className="edit outline icon"></i>
-        </button>
-        Boss3
-      </div>
-    );
-  }
-  renderItem4(bp) {
-    if (Object.keys(bp).length === 3 && !bp["4"]) return;
-    let color = "";
-    if (bp["4"]) {
-      if (bp["4"].includes("H0") || bp["4"].includes("N0")) color = "blue";
-      if (bp["4"].includes("H1") || bp["4"].includes("N1")) color = "yellow";
-    }
-    return (
-      <div className="item">
-        <button
-          onClick={(e) => {
-            e.stopPropagation();
-            this.showEditModal(this.props.charId, 4);
-          }}
-          className={`compact ui icon button ${color}`}
-        >
-          <i className="edit outline icon"></i>
-        </button>
-        Boss4
+        {bossCode[bossnumber]}
       </div>
     );
   }
@@ -171,10 +109,10 @@ class BossEdit extends React.Component {
         })()}
 
         <div className="ui  horizontal divided list">
-          {1415 <= lvl ? this.renderItem1(bp) : ""}
-          {1430 <= lvl ? this.renderItem2(bp) : ""}
-          {1475 <= lvl ? this.renderItem3(bp) : ""}
-          {1490 <= lvl ? this.renderItem4(bp) : ""}
+          {1415 <= lvl ? this.renderEdit(bp, BALTAN) : ""}
+          {1430 <= lvl ? this.renderEdit(bp, BIA) : ""}
+          {1475 <= lvl ? this.renderEdit(bp, KOKOU) : ""}
+          {1490 <= lvl ? this.renderEdit(bp, ABREL) : ""}
         </div>
       </div>
     );
