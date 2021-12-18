@@ -2,8 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchCharacters } from "../../actions";
-import Character from "../characters/Character";
 import _ from "lodash";
+
+import Character from "../characters/Character";
 
 class Dashboard extends React.Component {
   componentDidMount() {
@@ -18,9 +19,11 @@ class Dashboard extends React.Component {
       <table className="ui selectable celled table">
         <thead>
           <tr key={"Head"}>
-            <th>Name</th>
-            <th>Item Level</th>
-            <th>Progress</th>
+            <th>이름</th>
+            <th>레벨</th>
+            <th>군단장</th>
+            <th>어비스</th>
+            <th>길드</th>
           </tr>
         </thead>
         <tbody>

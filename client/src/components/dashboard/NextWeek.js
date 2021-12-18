@@ -33,9 +33,9 @@ class NextWeek extends React.Component {
       <div className="ui container">
         <h3 className="ui header">Summary</h3>
         <div className="ui list">
-          <div className="item">Total Gold Earned: {totalGold}</div>
+          <div className="item">이번주 벌어들인 골드: {totalGold}</div>
           <div className="item">
-            Homework finished: {top} out of {bottom}
+            군단장 진행도: {top} out of {bottom}
           </div>
         </div>
         <div className="ui section divider"></div>

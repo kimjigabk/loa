@@ -7,6 +7,7 @@ const characterSchema = new Schema({
   itemLevel: String,
   abyssProgress: Object,
   bossProgress: Object,
+  guildProgress: Object
 });
 
 mongoose.model("characters", characterSchema);
