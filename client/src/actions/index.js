@@ -39,12 +39,12 @@ export const updateBossProgress = (id, pb, boss) => async (dispatch) => {
   const gold = calculateGold(pb, boss);
   let str = encodeBossProgress(pb, boss);
   if (gold > 0) str = str + "G" + gold;
-  console.log(str);
+  // console.log(str);
   const bp = {};
   bp[boss] = str;
-  console.log(id);
-  console.log(pb);
-  console.log(bp);
+  // console.log(id);
+  // console.log(pb);
+  // console.log(bp);
   const response = await axios.patch(`/api/characters/boss/${id}`, bp);
   dispatch({
     type: EDIT_CHARACTER,
@@ -61,10 +61,8 @@ export const updateAbyssProgress = (id, ap) => async (dispatch) => {
   });
 };
 
-export const updateGuildProgress = (id, pb, boss) => async (dispatch) => {
-  const ap = {};
-
-  const response = await axios.patch(`/api/characters/guild/${id}`, ap);
+export const updateGuildProgress = (id, gp) => async (dispatch) => {
+  const response = await axios.patch(`/api/characters/guild/${id}`, gp);
   dispatch({
     type: EDIT_CHARACTER,
     payload: response.data,

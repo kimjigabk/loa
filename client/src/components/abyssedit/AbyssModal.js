@@ -4,6 +4,8 @@ import { updateAbyssProgress } from "../../actions";
 // import { populateAbyss } from "./populateAbyss";
 import { calculateGold } from "../calculation/calculateGold";
 
+import { ARGOS } from "../bossedit/bossCode";
+
 import Modal from "../Modal";
 
 class AbyssModal extends React.Component {
@@ -16,6 +18,7 @@ class AbyssModal extends React.Component {
 
   componentDidMount() {
     const { normal, bus, busfee, goldEarned } = this.props.abyssProgress;
+
     this.setState({
       normal,
       bus,
@@ -31,6 +34,11 @@ class AbyssModal extends React.Component {
           onClick={() => {
             this.props.updateAbyssProgress(this.props.editingCharId, {
               ...this.state,
+              goldEarned: calculateGold(
+                this.state,
+                ARGOS,
+                this.props.editingCharitemLevel
+              ),
             });
             this.props.hideEditModal();
           }}
@@ -89,7 +97,8 @@ class AbyssModal extends React.Component {
   renderGold() {
     return (
       <div>
-        번 골드: {calculateGold(this.state, 0, this.props.editingCharitemLevel)}
+        번 골드:{" "}
+        {calculateGold(this.state, ARGOS, this.props.editingCharitemLevel)}
       </div>
     );
   }

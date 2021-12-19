@@ -34,7 +34,7 @@ class AbyssEdit extends React.Component {
         >
           <i className="edit outline icon"></i>
         </button>
-        아르고스
+        알고
       </div>
     );
   }
