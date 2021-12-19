@@ -3,10 +3,15 @@ import BossEdit from "../bossedit/BossEdit";
 import AbyssEdit from "../abyssedit/AbyssEdit";
 import GuildEdit from "../guild/GuildEdit";
 
-const Character = ({ characterName, id, itemLevel, bossProgress }) => {
-  // console.log(bossProgress);
+const Character = ({
+  characterName,
+  id,
+  itemLevel,
+  bossProgress,
+  abyssProgress,
+  guildProgress,
+}) => {
   return (
-    // <tr key={props.id}>
     <React.Fragment>
       <td>{characterName}</td>
       <td>{itemLevel}</td>
@@ -19,10 +24,19 @@ const Character = ({ characterName, id, itemLevel, bossProgress }) => {
         />
       </td>
       <td>
-        <AbyssEdit />
+        <AbyssEdit
+          charId={id}
+          charName={characterName}
+          itemLevel={itemLevel}
+          abyssProgress={abyssProgress}
+        />
       </td>
       <td>
-        <GuildEdit />
+        <GuildEdit
+          charId={id}
+          charName={characterName}
+          guildProgress={guildProgress}
+        />
       </td>
     </React.Fragment>
   );

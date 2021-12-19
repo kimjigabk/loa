@@ -1,6 +1,13 @@
-export const calculateGold = (pb, boss) => {
+import { ARGOS, BALTAN, BIA, KOKOU, ABREL } from "../bossedit/bossCode";
+export const calculateGold = (pb, boss, lvl) => {
   let gold = 0;
-  if (boss === 1) {
+  if (boss === ARGOS) {
+    if (pb.normal && lvl < 1475) gold += 3300;
+    if (pb.bus) gold += parseInt(pb.busfee);
+    return gold;
+  }
+
+  if (boss === BALTAN) {
     if (pb.normal) gold = 3300;
     if (pb.hard) gold = 4500;
     if (pb.gateway) {
@@ -12,7 +19,7 @@ export const calculateGold = (pb, boss) => {
     if (pb.bus) gold += parseInt(pb.busfee);
     return gold;
   }
-  if (boss === 2) {
+  if (boss === BIA) {
     if (pb.normal) gold = 3300;
     if (pb.hard) gold = 4500;
     if (pb.gateway) {
@@ -26,7 +33,7 @@ export const calculateGold = (pb, boss) => {
     if (pb.bus) gold += parseInt(pb.busfee);
     return gold;
   }
-  if (boss === 3) {
+  if (boss === KOKOU) {
     if (pb.normal) gold = 4500;
     if (pb.gateway) {
       if (pb.n1) gold += 500;
@@ -36,7 +43,7 @@ export const calculateGold = (pb, boss) => {
     if (pb.bus) gold += parseInt(pb.busfee);
     return gold;
   }
-  if (boss === 4) {
+  if (boss === ABREL) {
     if (pb.normal) gold = 7500;
     if (pb.hard) gold = 9500;
     if (pb.gateway) {

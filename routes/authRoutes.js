@@ -24,6 +24,7 @@ module.exports = (app) => {
     res.redirect("/");
   });
 
+  // save progress User
   app.patch("/api/current_user/save", async (req, res) => {
     const { top, bottom, totalGold } = req.body;
     try {
@@ -40,6 +41,7 @@ module.exports = (app) => {
     }
   });
 
+  // edit display name
   app.patch("/api/current_user/name", async (req, res) => {
     const newName = req.body;
     try {

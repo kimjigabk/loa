@@ -10,6 +10,7 @@ export const calculateTotalGoldEarned = (chars) => {
       arr.map((encoded) => {
         let matches = encoded.match(reg);
         if (matches[1]) {
+          console.log(matches)
           totalGold += parseInt(matches[1].substring(1));
         }
         return 0;

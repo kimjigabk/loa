@@ -1,5 +1,3 @@
-// import { calculateGold } from "../components/bossedit/calculateGold";
-
 export const encodeBossProgress = (pb, boss) => {
   //   const state = {
   //     normal: false,

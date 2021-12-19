@@ -35,6 +35,8 @@ class Dashboard extends React.Component {
                   characterName={char.characterName}
                   itemLevel={char.itemLevel}
                   bossProgress={char.bossProgress || {}}
+                  abyssProgress={char.abyssProgress || {}}
+                  guildProgress={char.guildProgress || {}}
                 />
               </tr>
             );

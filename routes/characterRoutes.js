@@ -4,7 +4,7 @@ const User = mongoose.model("users");
 
 module.exports = (app) => {
   app.get("/api/characters/", async (req, res) => {
-    const chars = await Character.find({ googleId: req.user.googleId }, "-__v");    
+    const chars = await Character.find({ googleId: req.user.googleId }, "-__v");
     res.send(chars);
   });
 
@@ -20,7 +20,7 @@ module.exports = (app) => {
 
     try {
       await character.save();
-      user = await User.findOneAndUpdate(
+      const user = await User.findOneAndUpdate(
         { _id: req.user.id },
         { $addToSet: { characters: character._id.toString() } }
       );
@@ -30,14 +30,29 @@ module.exports = (app) => {
     }
   });
 
-  // update progress
-  app.patch("/api/characters/:id", async (req, res) => {
+  // update Boss progress
+  app.patch("/api/characters/boss/:id", async (req, res) => {
     const bp = req.body;
     try {
-      char = await Character.findOne({ _id: req.params.id });
-      updatedChar = await Character.findOneAndUpdate(
+      const char = await Character.findOne({ _id: req.params.id });
+      const updatedChar = await Character.findOneAndUpdate(
         { _id: req.params.id },
         { bossProgress: { ...char.bossProgress, ...bp } },
+        { new: true }
+      ).select("-__v");
+      res.send(updatedChar);
+    } catch (err) {
+      res.status(422).send(err);
+    }
+  });
+
+  // update Abyss progress
+  app.patch("/api/characters/abyss/:id", async (req, res) => {
+    const ap = req.body;
+    try {
+      const updatedChar = await Character.findOneAndUpdate(
+        { _id: req.params.id },
+        { abyssProgress: ap },
         { new: true }
       ).select("-__v");
       res.send(updatedChar);
@@ -53,7 +68,7 @@ module.exports = (app) => {
       ids.map(async (id) => {
         char = await Character.findOneAndUpdate(
           { _id: id },
-          { bossProgress: {} }
+          { bossProgress: {}, abyssProgress: {}, guildProgress: {} }
         );
       });
       const chars = await Character.find(

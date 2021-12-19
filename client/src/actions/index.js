@@ -9,8 +9,8 @@ import {
   RESET_PROGRESS,
 } from "./types";
 
-import { calculateGold } from "../components/bossedit/calculateGold";
 import { encodeBossProgress } from "./encodeBossProgress";
+import { calculateGold } from "../components/calculation/calculateGold";
 
 export const fetchCharacters = () => async (dispatch) => {
   const response = await axios.get("/api/characters");
@@ -35,23 +35,43 @@ export const createCharacter = (formValues) => async (dispatch, getState) => {
   history.push("/homework");
 };
 
-export const updateBossProgress =
-  (id, pb, boss) => async (dispatch, getState) => {
-    const gold = calculateGold(pb, boss);
-    let str = encodeBossProgress(pb, boss);
-    if (gold > 0) str = str + "G" + gold;
-    console.log(str);
-    const bp = {};
-    bp[boss] = str;
-    console.log(id);
-    console.log(pb);
-    console.log(bp);
-    const response = await axios.patch(`/api/characters/${id}`, bp);
-    dispatch({
-      type: EDIT_CHARACTER,
-      payload: response.data,
-    });
-  };
+export const updateBossProgress = (id, pb, boss) => async (dispatch) => {
+  const gold = calculateGold(pb, boss);
+  let str = encodeBossProgress(pb, boss);
+  if (gold > 0) str = str + "G" + gold;
+  console.log(str);
+  const bp = {};
+  bp[boss] = str;
+  console.log(id);
+  console.log(pb);
+  console.log(bp);
+  const response = await axios.patch(`/api/characters/boss/${id}`, bp);
+  dispatch({
+    type: EDIT_CHARACTER,
+    payload: response.data,
+  });
+};
+
+export const updateAbyssProgress = (id, ap) => async (dispatch) => {
+  const response = await axios.patch(`/api/characters/abyss/${id}`, ap);
+
+  dispatch({
+    type: EDIT_CHARACTER,
+    payload: response.data,
+  });
+};
+
+export const updateGuildProgress = (id, pb, boss) => async (dispatch) => {
+  const ap = {};
+
+  const response = await axios.patch(`/api/characters/guild/${id}`, ap);
+  dispatch({
+    type: EDIT_CHARACTER,
+    payload: response.data,
+  });
+};
+
+// next Week
 export const saveProgress = (top, bottom, totalGold) => async (dispatch) => {
   const info = { top, bottom, totalGold };
   const response = await axios.patch("/api/current_user/save", info);

@@ -4,7 +4,7 @@ import { updateBossProgress } from "../../actions";
 import { populateBoss } from "./populateBoss";
 
 import Modal from "../Modal";
-import { calculateGold } from "./calculateGold";
+import { calculateGold } from "../calculation/calculateGold";
 
 class BossEdit2 extends React.Component {
   state = {
