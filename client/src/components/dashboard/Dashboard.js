@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
+
 import { fetchCharacters } from "../../actions";
 import _ from "lodash";
 
@@ -11,6 +13,13 @@ class Dashboard extends React.Component {
     this.props.fetchCharacters();
   }
   renderList() {
+    if (this.props.auth == null) {
+      return;
+    }
+    // not logged in
+    else if (this.props.auth === false) {
+      return <Redirect to="/" />;
+    }
     const chars = _.orderBy(this.props.chars, ["itemLevel"], ["desc"]);
     // console.log(chars);
     if (chars.length === 0) return "";
@@ -69,9 +78,10 @@ class Dashboard extends React.Component {
     );
   }
 }
-const mapStateToProps = ({ char }) => {
+const mapStateToProps = ({ char, auth }) => {
   return {
     chars: Object.values(char),
+    auth,
   };
 };
 export default connect(mapStateToProps, { fetchCharacters })(Dashboard);

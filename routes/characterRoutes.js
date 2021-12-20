@@ -4,8 +4,15 @@ const User = mongoose.model("users");
 
 module.exports = (app) => {
   app.get("/api/characters/", async (req, res) => {
-    const chars = await Character.find({ googleId: req.user.googleId }, "-__v");
-    res.send(chars);
+    try {
+      const chars = await Character.find(
+        { googleId: req.user.googleId },
+        "-__v"
+      );
+      res.send(chars);
+    } catch (err) {
+      res.status(422).send(err);
+    }
   });
 
   //create Character
