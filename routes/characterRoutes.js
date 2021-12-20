@@ -37,6 +37,22 @@ module.exports = (app) => {
     }
   });
 
+  //edit Character info
+  app.patch("/api/characters/:id", async (req, res) => {
+    const { characterName, itemLevel } = req.body;
+
+    try {
+      const char = await Character.findOneAndUpdate(
+        { _id: req.params.id },
+        { characterName, itemLevel },
+        { new: true }
+      );
+      res.send(char);
+    } catch (err) {
+      res.status(422).send(err);
+    }
+  });
+
   // update Boss progress
   app.patch("/api/characters/boss/:id", async (req, res) => {
     const bp = req.body;
@@ -68,12 +84,27 @@ module.exports = (app) => {
     }
   });
 
+  // update Abyss progress
+  app.patch("/api/characters/guild/:id", async (req, res) => {
+    const gp = req.body;
+    try {
+      const updatedChar = await Character.findOneAndUpdate(
+        { _id: req.params.id },
+        { guildProgress: gp },
+        { new: true }
+      ).select("-__v");
+      res.send(updatedChar);
+    } catch (err) {
+      res.status(422).send(err);
+    }
+  });
+
   //reset progress
   app.patch("/api/characters/", async (req, res) => {
     const ids = req.body;
     try {
       ids.map(async (id) => {
-        char = await Character.findOneAndUpdate(
+        let char = await Character.findOneAndUpdate(
           { _id: id },
           { bossProgress: {}, abyssProgress: {}, guildProgress: {} }
         );
