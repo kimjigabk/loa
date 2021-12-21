@@ -22,19 +22,19 @@ class Header extends Component {
               onClick={() => this.props.history.push("/statistics")}
             >
               <i className="chart bar icon" />
-              Statistics
+              통계
             </div>
             <div
               className="item"
               onClick={() => this.props.history.push("/config")}
             >
               <i className="edit outline icon" />
-              Config
+              닉네임 변경
             </div>
             <div className="item">
               <a href="/api/logout/">
                 <i className="google icon" />
-                Sign Out
+                로그아웃
               </a>
             </div>
           </div>
@@ -48,7 +48,7 @@ class Header extends Component {
     return (
       <div className="ui tabular menu">
         <Link to={this.props.auth ? "/homework" : "/"} className="item">
-          Main
+          홈
         </Link>
         <div className="right menu">{this.renderAuthButton()}</div>
       </div>
