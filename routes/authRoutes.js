@@ -42,13 +42,13 @@ module.exports = (app) => {
   });
 
   // edit display name
-  app.patch("/api/current_user/name", async (req, res) => {
-    const newName = req.body;
+  app.patch("/api/current_user", async (req, res) => {
+    const { displayName } = req.body;
     try {
       const user = await User.findOneAndUpdate(
         { _id: req.user.id },
         {
-          displayName: newName,
+          displayName,
         },
         { new: true }
       );

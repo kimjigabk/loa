@@ -10,7 +10,7 @@ import Dashboard from "./dashboard/Dashboard";
 import Statistics from "./statistics/Statistics";
 import CharacterCreate from "./characters/CharacterCreate";
 import NextWeek from "./dashboard/NextWeek";
-const Config = () => <h2>Config</h2>;
+import ConfigPage from "./configpage/ConfigPage";
 
 class App extends React.Component {
   componentDidMount() {
@@ -26,7 +26,7 @@ class App extends React.Component {
               <Route path="/" exact component={Landing} />
               <Route path="/homework" exact component={Dashboard} />
               <Route path="/statistics/" exact component={Statistics} />
-              <Route path="/config/" exact component={Config} />
+              <Route path="/config/" exact component={ConfigPage} />
               <Route path="/characters/new" exact component={CharacterCreate} />
               <Route path="/characters/save" exact component={NextWeek} />
             </Switch>

@@ -7,6 +7,7 @@ import {
   EDIT_CHARACTER,
   SAVE_PROGRESS,
   RESET_PROGRESS,
+  EDIT_USER,
 } from "./types";
 
 import { encodeBossProgress } from "./encodeBossProgress";
@@ -95,4 +96,15 @@ export const fetchUser = () => async (dispatch) => {
     type: FETCH_USER,
     payload: response.data,
   });
+};
+
+export const editUser = (formValues) => async (dispatch) => {
+  const response = await axios.patch("/api/current_user", {
+    ...formValues,
+  });
+  dispatch({
+    type: EDIT_USER,
+    payload: response.data,
+  });
+  history.push("/homework");
 };
