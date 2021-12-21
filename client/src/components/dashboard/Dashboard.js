@@ -60,10 +60,10 @@ class Dashboard extends React.Component {
       <div className="row" style={{ marginTop: "25px", marginBottom: "10px" }}>
         <div style={{ textAlign: "right" }}>
           <Link to="/characters/save" className="ui button primary">
-            Next Week
+            다음주로~
           </Link>
           <Link to="/characters/new" className="ui button primary">
-            Create Entry
+            캐릭터 추가
           </Link>
         </div>
       </div>

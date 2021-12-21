@@ -20,7 +20,7 @@ class NextWeek extends React.Component {
       <div className="row" style={{ marginTop: "25px", marginBottom: "10px" }}>
         <div style={{ textAlign: "right" }}>
           <button onClick={this.onClickSave} className="ui button negative">
-            Save
+            저장
           </button>
         </div>
       </div>
@@ -31,9 +31,9 @@ class NextWeek extends React.Component {
     const totalGold = calculateTotalGoldEarned(this.props.chars);
     return (
       <div className="ui container">
-        <h3 className="ui header">Summary</h3>
+        <h3 className="ui header">~이번주 요약~</h3>
         <div className="ui list">
-          <div className="item">이번주 벌어들인 골드: {totalGold}</div>
+          <div className="item">벌어들인 골드: {totalGold} 골드</div>
           <div className="item">
             군단장 진행도: {top} out of {bottom}
           </div>
