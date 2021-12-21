@@ -2,9 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
+import _ from "lodash";
 
 import { fetchCharacters } from "../../actions";
-import _ from "lodash";
+import logo from "./apple-icon-precomposed.png";
 
 import Character from "../characters/Character";
 
@@ -71,7 +72,9 @@ class Dashboard extends React.Component {
   render() {
     return (
       <div>
-        <h2>Dashboard</h2>
+        <span>
+          <img alt="놀자에몽" src={logo} height="64" width="64"></img>
+        </span>
         <div>{this.renderList()}</div>
         {this.renderCreate()}
       </div>
