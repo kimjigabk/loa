@@ -54,6 +54,7 @@ export const calculateGold = (pb, boss, lvl) => {
       if (pb.h2) gold += 2000;
       if (pb.h3) gold += 3000;
     }
+    // 
     if (pb.bus) gold += parseInt(pb.busfee);
     return gold;
   }
