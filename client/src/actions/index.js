@@ -8,6 +8,7 @@ import {
   SAVE_PROGRESS,
   RESET_PROGRESS,
   EDIT_USER,
+  FETCH_CHARACTER,
 } from "./types";
 
 import { encodeBossProgress } from "./encodeBossProgress";
@@ -21,6 +22,15 @@ export const fetchCharacters = () => async (dispatch) => {
     payload: response.data,
   });
 };
+
+export const fetchCharacter = (id) => async (dispatch) => {
+  const response = axios.get(`/api/characters/${id}`);
+  dispatch({
+    type: FETCH_CHARACTER,
+    payload: response.data,
+  });
+};
+
 export const createCharacter = (formValues) => async (dispatch, getState) => {
   const googleId = getState().auth.googleId;
   // console.log(formValues);
@@ -31,6 +41,17 @@ export const createCharacter = (formValues) => async (dispatch, getState) => {
   });
   dispatch({
     type: CREATE_CHARACTER,
+    payload: response.data,
+  });
+  history.push("/homework");
+};
+
+export const editCharacter = (id, formValues) => async (dispatch, getState) => {
+  const response = await axios.patch(`/api/characters/${id}`, {
+    ...formValues,
+  });
+  dispatch({
+    type: EDIT_CHARACTER,
     payload: response.data,
   });
   history.push("/homework");

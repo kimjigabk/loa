@@ -11,6 +11,7 @@ import Statistics from "./statistics/Statistics";
 import CharacterCreate from "./characters/CharacterCreate";
 import NextWeek from "./dashboard/NextWeek";
 import ConfigPage from "./configpage/ConfigPage";
+import CharacterEdit from "./characters/CharacterEdit";
 
 class App extends React.Component {
   componentDidMount() {
@@ -29,6 +30,11 @@ class App extends React.Component {
               <Route path="/config/" exact component={ConfigPage} />
               <Route path="/characters/new" exact component={CharacterCreate} />
               <Route path="/characters/save" exact component={NextWeek} />
+              <Route
+                path="/characters/edit/:id"
+                exact
+                component={CharacterEdit}
+              />
             </Switch>
           </div>
         </Router>

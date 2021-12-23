@@ -15,6 +15,15 @@ module.exports = (app) => {
     }
   });
 
+  app.get("/api/characters/:id", async (req, res) => {
+    try {
+      const char = await Character.findOne({ _id: req.params.id }, "-__v");
+      res.send(char);
+    } catch (err) {
+      res.status(422).send(err);
+    }
+  });
+
   //create Character
   app.post("/api/characters", async (req, res) => {
     const { characterName, itemLevel, googleId } = req.body;
@@ -42,8 +51,8 @@ module.exports = (app) => {
     const { characterName, itemLevel } = req.body;
 
     try {
-      const char = await Character.findOneAndUpdate(
-        { _id: req.params.id },
+      const char = await Character.findByIdAndUpdate(
+        req.params.id,
         { characterName, itemLevel },
         { new: true }
       );

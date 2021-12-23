@@ -6,6 +6,7 @@ export const POPULATE_BOSS = "populate_boss";
 export const RESET_PROGRESS = "reset_progress";
 export const SAVE_PROGRESS = "save_progress";
 export const EDIT_USER = "edit_user";
+export const FETCH_CHARACTER = "fetch_character";
 // export const SIGN_IN = "SIGN_IN";
 
 // export const SIGN_IN = "SIGN_IN";
