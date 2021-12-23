@@ -11,7 +11,7 @@ class CharacterCreate extends Component {
   render() {
     return (
       <div style={{ margin: "0 5rem" }}>
-        <h2>Create a Entry</h2>
+        <h2>캐릭터 추가</h2>
         <CharacterForm onSubmit={this.onSubmit} />
       </div>
     );

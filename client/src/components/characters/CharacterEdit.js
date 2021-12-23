@@ -16,8 +16,8 @@ class CharacterEdit extends React.Component {
       return <div>불러오는 중</div>;
     }
     return (
-      <div>
-        <h2>Edit for: {this.props.character.characterName}</h2>
+      <div style={{ margin: "0 5rem" }}>
+        <h2>수정할 캐릭터: {this.props.character.characterName}</h2>
         <CharacterForm
           initialValues={_.pick(
             this.props.character,
