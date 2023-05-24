@@ -1,37 +1,37 @@
-const passport = require("passport");
-const mongoose = require("mongoose");
-const User = mongoose.model("users");
+const passport = require('passport');
+const mongoose = require('mongoose');
+const User = mongoose.model('users');
 
 module.exports = (app) => {
   app.get(
-    "/auth/google",
-    passport.authenticate("google", {
-      scope: ["profile", "email"],
+    '/auth/google',
+    passport.authenticate('google', {
+      scope: ['profile', 'email'],
     })
   );
 
   app.get(
-    "/auth/google/callback",
-    passport.authenticate("google"),
+    '/auth/google/callback',
+    passport.authenticate('google'),
     (req, res) => {
-      res.redirect("/homework");
+      res.redirect('/homework');
     }
   );
 
-  app.get("/api/logout", (req, res) => {
+  app.get('/api/logout', (req, res) => {
     req.logout();
     // res.send(req.user);
-    res.redirect("/");
+    res.redirect('/');
   });
 
   // save progress User
-  app.patch("/api/current_user/save", async (req, res) => {
+  app.patch('/api/current_user/save', async (req, res) => {
     const { top, bottom, totalGold } = req.body;
     try {
       const user = await User.findOneAndUpdate(
         { _id: req.user.id },
         {
-          $addToSet: { achievement: top + "/" + bottom, goldEarned: totalGold },
+          $push: { achievement: top + '/' + bottom, goldEarned: totalGold },
         },
         { new: true }
       );
@@ -42,7 +42,7 @@ module.exports = (app) => {
   });
 
   // edit display name
-  app.patch("/api/current_user", async (req, res) => {
+  app.patch('/api/current_user', async (req, res) => {
     const { displayName } = req.body;
     try {
       const user = await User.findOneAndUpdate(
@@ -58,7 +58,7 @@ module.exports = (app) => {
     }
   });
 
-  app.get("/api/current_user", (req, res) => {
+  app.get('/api/current_user', (req, res) => {
     res.send(req.user);
   });
 };
