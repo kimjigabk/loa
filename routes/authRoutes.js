@@ -18,10 +18,14 @@ module.exports = (app) => {
     }
   );
 
-  app.get('/api/logout', (req, res) => {
-    req.logout();
+  app.get('/api/logout', (req, res, next) => {
+    req.logout(function (err) {
+      if (err) {
+        return next(err);
+      }
+      res.redirect('/');
+    });
     // res.send(req.user);
-    res.redirect('/');
   });
 
   // save progress User
